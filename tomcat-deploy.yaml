@@ -17,3 +17,21 @@ spec:
           image: tomcat:1.0
           ports:
             - containerPort: 8080
+            
+        - name: jolokia-exporter
+          image: scalify/jolokia_exporter:latest
+          args:
+            - export
+            - /config/config.yml
+            - "http://localhost:8080/jolokia"
+          ports:
+            - containerPort: 9422
+          volumeMounts:
+           - name: jolokia-config
+             mountPath: /config
+
+
+      volumes:
+        - name: jolokia-config
+          configMap:
+            name: jolokia-exporter-config

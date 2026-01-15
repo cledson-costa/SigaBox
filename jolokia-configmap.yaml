@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jolokia-exporter-config
+data:
+  config.yml: |
+    rules:
+      - pattern: java.lang<type=Threading><>(.+ThreadCount)
+        name: java_lang_threading$1
+        attrNameSnakeCase: true
+        type: GAUGE
+        help: Java's $1
+      - pattern: java.lang<type=Threading><>(.+ThreadCount)
+        name: java_lang_threading_thread_count
+        attrNameSnakeCase: true
+        type: GAUGE
+        labels:
+          "type": $1
+        help: Java's $1
+      - pattern: java.lang<type=Memory><>HeapMemoryUsage/(.+)
+        name: java_lang_heap_memory_usage_$1
+        attrNameSnakeCase: true
+        type: GAUGE
+        help: Heap memory $1 usage
+      - pattern: java.lang<type=Runtime><>SpecVersion
+        name: java_lang_runtime_spec_version
+        value: 1
+        labels:
+          "version": $0
+        type: GAUGE
+      - pattern: java.lang<name=PS Scavenge,type=GarbageCollector><>(CollectionCount|CollectionTime)
+        name: java_lang_garbage_collector$1
+        attrNameSnakeCase: true
+        filter:
+          Name: "PS Scavenge"
+        type: GAUGE
+        help: Index Queue Size

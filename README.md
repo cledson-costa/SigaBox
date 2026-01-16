@@ -2,7 +2,7 @@
 
 # Projeto SigaBox
 
-Este repositório busca demonstrar as instruções para execução dos procedimentos solicitados da atividade solicitada
+Este repositório busca demonstrar as instruções para execução dos procedimentos solicitados da atividade solicitada. Projeto separado em 3 branches contendo as três etapas do processo.
 
 ## Sumário
 

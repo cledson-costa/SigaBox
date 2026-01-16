@@ -1,6 +1,6 @@
 (INCOMPLETO)
 
-# Projeto SigaContainer
+# Projeto SigaBox
 
 Este repositório busca demonstrar as instruções para execução dos procedimentos solicitados da atividade solicitada
 

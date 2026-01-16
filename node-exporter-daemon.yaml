@@ -36,13 +36,13 @@ spec:
               mountPath: /rootfs
               readOnly: true
               
-        volumes:
-          - name: proc
-            hostPath:
-              path: /proc
-          - name: sys
-            hostPath:
-              path: /sys
-          - name: root
-            hostPath:
-              path: /
+      volumes:
+        - name: proc
+          hostPath:
+            path: /proc
+        - name: sys
+          hostPath:
+            path: /sys
+        - name: root
+          hostPath:
+            path: /

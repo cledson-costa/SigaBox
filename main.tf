@@ -9,13 +9,13 @@ data "aws_security_group" "sg_estudos" {
   }
 }
 
-resource "aws_instance" "Projeto-siga_Jenk" {
+resource "aws_instance" "SigaBox" {
     ami                         =   "ami-0f9de6e2d2f067fca"
     instance_type               =   "t3.small"
     key_name                    =   "projeto_siga"
     vpc_security_group_ids      = [data.aws_security_group.sg_estudos.id]
     tags = {
-        Name = "Projeto-Siga_Jenk"
+        Name = "SigaBox"
     }
   provisioner "remote-exec" {
     inline = ["sudo apt update -y"]
@@ -36,5 +36,5 @@ EOT
 }
 
 output "public_ip" {
-  value = aws_instance.Projeto-siga_Jenk.public_ip
+  value = aws_instance.SigaBox.public_ip
 }

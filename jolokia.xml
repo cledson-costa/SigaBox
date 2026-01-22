@@ -1,0 +1,21 @@
+<Context>
+  <Valve className="org.apache.catalina.authenticator.BasicAuthenticator"/>
+
+  <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+         resourceName="UserDatabase"/>
+
+  <SecurityConstraint>
+    <WebResourceCollection>
+      <WebResourceName>Jolokia</WebResourceName>
+      <UrlPattern>/*</UrlPattern>
+    </WebResourceCollection>
+    <AuthConstraint>
+      <RoleName>jolokia</RoleName>
+    </AuthConstraint>
+  </SecurityConstraint>
+
+  <LoginConfig>
+    <AuthMethod>BASIC</AuthMethod>
+    <RealmName>Jolokia</RealmName>
+  </LoginConfig>
+</Context>

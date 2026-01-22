@@ -24,6 +24,17 @@ spec:
             - export
             - /config/config.yml
             - "http://localhost:8080/jolokia"
+          env:
+            - name: JOLOKIA_USER
+              valueFrom:
+                secretKeyRef:
+                  name: jolokia-auth
+                  key: username
+            - name: JOLOKIA_PW
+              valueFrom:
+                secretKeyRef:
+                  name: jolokia-auth
+                  key: password
           ports:
             - containerPort: 9422
           volumeMounts:

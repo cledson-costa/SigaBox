@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: jenkins-pvc
 spec:
+  storageClassName: nfs-client #Precisa da instalação do provisionador NFS
   accessModes:
     - ReadWriteOnce
   resources:

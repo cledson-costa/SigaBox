@@ -17,6 +17,9 @@ spec:
           image: cledsoncosta/tomcat:1.0
           ports:
             - containerPort: 8080
+        volumeMounts:
+          - name: jekinks-volume
+            mountPath: /var/jenkins_home
             
         - name: jolokia-exporter
           image: scalify/jolokia_exporter:latest
@@ -46,3 +49,6 @@ spec:
         - name: jolokia-config
           configMap:
             name: jolokia-exporter-config
+        - name: jenkins-volume
+          persistentVolumeClaim:
+            claimName: jenkins-pvc
